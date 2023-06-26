@@ -14,7 +14,7 @@
     "tabs"
   ],
   "background": {
-    "service_worker": "background.js",
+    "scripts": ["background.js"],
     "type": "module"
   },
   "content_scripts": [
@@ -24,5 +24,10 @@
       "all_frames": true
     }
   ],
-  "minimum_chrome_version": "114"
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "fast-scroll@addons.mozilla.org",
+      "strict_min_version": "114.0"
+    }
+  }
 }
