@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="color-scheme" content="dark light" />
+<meta http-equiv="referrer-policy" content="no-referrer" />
+<title>Fast Scroll Usage</title>
+<style>
+html{
+  min-width: 783px;
+  min-height: 583px;
+}
+body{
+  margin: 15px;
+  font-family: Segoe UI, Helvetica, sans-serif;
+  font-size: 14px;
+}
+table{
+  border: 1px solid gray;
+  border-collapse: collapse;
+}
+th{
+  text-align: left;
+}
+th,td{
+  padding: 8px;
+  border: 1px solid gray;
+}
+#options{
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  width: 120px;
+  height: 32px;
+}
+</style>
+</head>
+<body>
+<h1>Fast Scroll Usage</h1>
+<button id="options">Options</button>
+<h2>Features</h2>
+<ul>
+  <li>supports both vertical and horizontal scroll directions, both instant and smooth scroll behaviors</li>
+  <li>supports both by-pixels and by-page delta modes</li>
+  <li>supports fast zoom iteration over integral multiples(200%, 300%, 400%, ...), unit fractions(50%, 33%, 25%, ...)</li>
+  <li>works friendly with overlay scrollbars if scroll behavior is smooth</li>
+</ul>
+Special Notes:
+<ul>
+  <li>won't work when <a href="https://learn.microsoft.com/en-us/windows-hardware/drivers/hid/keyboard-and-mouse-hid-client-drivers#supported-buttons-and-wheels-on-mice" target="_blank">Smooth Scroll Wheel</a> or "Scroll one screen at a time" is detected thus to avoid conflict</li>
+  <li>only works on top-level scrolling element</li>
+</ul>
+
+<h2>Usage:</h2>
+<p>Activation Modifier Key: <kbd>Alt</kbd> / <kbd>option</kbd></p>
+<table>
+<thead>
+  <tr>
+    <th>Action \ Input \ Platform</th>
+    <th>Windows, Linux</th>
+    <th>macOS</th>
+  </tr>
+</thead>
+<tbody>
+  <tr>
+    <td>fast vertical scroll</td>
+    <td><kbd>Alt</kbd> + <code>WheelY</code></td>
+    <td><kbd>option</kbd> + <code>WheelY</code></td>
+  </tr>
+  <tr>
+    <td>fast horizontal scroll</td>
+    <td><kbd>Alt</kbd> + <kbd>Shift</kbd> + <code>WheelY</code>, <kbd>Alt</kbd> + <code>WheelX</code></td>
+    <td><kbd>option</kbd> + <kbd>Shift</kbd> + <code>WheelY</code>, <kbd>option</kbd> + <code>WheelX</code></td>
+  </tr>
+    <td>fast zoom</td>
+    <td><kbd>Alt</kbd> + <kbd>Ctrl</kbd> + <code>WheelY</code></td>
+    <td><kbd>option</kbd> + <kbd>command</kbd> + <code>WheelY</code></td>
+  </tr>
+</tbody>
+</table>
+<script type="module" src="popup.js"></script>
+</body>
+</html>

@@ -1,6 +1,9 @@
-const isFirefox = 'fileName' in new Error();
+const env = {
+  isFirefox: 'fileName' in new Error()
+};
 
-let zoomValues = isFirefox ? [0.3, 0.5, 1, 2, 3, 4, 5] : [0.25, 0.333333, 0.5, 1, 2, 3, 4, 5];
+/* zoom */
+let zoomValues = env.isFirefox ? [0.3, 0.5, 1, 2, 3, 4, 5] : [0.25, 0.333333, 0.5, 1, 2, 3, 4, 5];
 let minZoomValue = Math.min(...zoomValues);
 let maxZoomValue = Math.max(...zoomValues);
 
@@ -55,15 +58,45 @@ async function zoomOut() {
   }
 }
 
+/* scroll */
+let scrollBehavior = 'auto';
+function setScrollBehavior(behavior) {
+  scrollBehavior = behavior;
+}
+function getScrollBehavior() {
+  return scrollBehavior;
+}
+
+/* main */
+let methods = {
+  zoomIn,
+  zoomOut,
+  setScrollBehavior,
+  getScrollBehavior,
+};
 chrome.runtime.onMessage.addListener(function(data, sender, sendResponse) {
-  switch (data.action) {
-    case 'zoomIn':
-      zoomIn();
-      sendResponse({code: 0});
-      break;
-    case 'zoomOut':
-      zoomOut();
-      sendResponse({code: 0});
-      break;
+  let method = methods[data.action];
+  if (typeof method === 'function') {
+    let returnValue;
+    try {
+      returnValue = method.apply(methods, 'value' in data ? [data.value] : []);
+    } catch (e) {
+      let reason = {name: e.name, message: e.message, stack: e.stack};
+      sendResponse({status: 'rejected', reason});
+      return;
+    }
+    if (method.constructor.name === 'AsyncFunction' ||
+      returnValue && typeof returnValue.then === 'function') { // check if returnValue is thenable
+      let responseId = crypto.randomUUID();
+      sendResponse({status: 'pending', responseId});
+      Promise.resolve(returnValue).then((value) => {
+        chrome.tabs.sendMessage(sender.tab.id, {status: 'fulfilled', value, responseId}, {frameId: sender.frameId});
+      }, (e) => {
+        let reason = {name: e.name, message: e.message, stack: e.stack};
+        chrome.tabs.sendMessage(sender.tab.id, {status: 'rejected', reason, responseId}, {frameId: sender.frameId});
+      });
+    } else {
+      sendResponse({status: 'fulfilled', value: returnValue});
+    }
   }
 });

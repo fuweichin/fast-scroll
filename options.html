@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="color-scheme" content="dark light" />
+<title>Fast Scroll Options</title>
+<style>
+body{
+  margin: 0px;
+  font-family: Segoe UI, Helvetica, sans-serif;
+  font-size: 14px;
+}
+h1{
+  margin-top: 0;
+}
+#fixed-overlay{
+  position: fixed;
+  top: 15px;
+  left: 15px;
+  right: 15px;
+}
+#gradient-background{
+  min-width: 3840px;
+  height: 7680px;
+}
+#fastScrollFactor{
+  max-width: 3em;
+}
+.indent {
+  padding-left: 2em;
+}
+#save{
+  width: 120px;
+}
+</style>
+</head>
+<body>
+
+<div id="gradient-background"></div>
+
+<form id="fixed-overlay" autocomplete="off">
+  <h1>Fast Scroll Options</h1>
+  <p>Choose how fast scroll works</p>
+  <p>
+    <input id="scrollByPixels" type="radio" name="fastScrollMode" value="1" checked />
+    <label for="scrollByPixels">Scroll by pixels / lines</label>
+  </p>
+  <p class="indent">
+    <label for="fastScrollFactor">Fast scroll factor:</label>
+    <input id="fastScrollFactor" type="number" value="3" min="2" max="8" required />
+    <span>(2 ~ 8)</span>
+  </p>
+  <p>
+    <input id="scrollByPages" type="radio" name="fastScrollMode" value="2" />
+    <label for="scrollByPages">Scroll by pages</label>
+  </p>
+  <p class="indent">
+    Fast scroll will scroll one page at a time, just like using <kbd>PageUp</kbd>/<kbd>PageDown</kbd> keys
+  </p>
+  <button type="button" id="save">Save</button>
+  <p id="message"></p>
+  <p>Tip: As you change options before saving, you may have a live fast scroll test on this page.</p>
+</form>
+
+<script type="module" src="options.js"></script>
+<script src="content.js"></script>
+</body>
+</html>
