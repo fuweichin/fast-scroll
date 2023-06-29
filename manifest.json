@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "Fast Scroll",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Brings fast vertical scroll, fast horizontal scroll and fast zoom",
   "author": "Fuwei Chin",
   "icons": {
@@ -11,7 +11,8 @@
     "48": "icons/icon_48x48.png"
   },
   "permissions": [
-    "tabs"
+    "tabs",
+    "storage"
   ],
   "background": {
     "scripts": ["background.js"],
@@ -24,6 +25,18 @@
       "all_frames": true
     }
   ],
+  "action": {
+    "default_icon": {
+      "16": "icons/icon_16x16.png",
+      "32": "icons/icon_32x32.png"
+    },
+    "default_title": "Fast Scroll Usage",
+    "default_popup": "popup.html"
+  },
+  "options_ui": {
+    "page": "options.html",
+    "open_in_tab": true
+  },
   "browser_specific_settings": {
     "gecko": {
       "id": "fast-scroll@addons.mozilla.org",

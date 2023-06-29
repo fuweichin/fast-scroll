@@ -1,18 +1,22 @@
 # Fast Scroll
 
-[Fast Scroll](https://github.com/fuweichin/fast-scroll) by Fuwei Chin brings fast vertical scroll, fast horizontal scroll and fast zoom, works friendly with Overlay Scrollbars and Smooth Scroll Wheel.
+[Fast Scroll](https://github.com/fuweichin/fast-scroll) by Fuwei Chin brings fast vertical scroll, fast horizontal scroll and fast zoom.
 
 
 
 ## Features
 
-+ supports Smooth Scroll partially, won't work when detected [Smooth Scroll Wheel](https://learn.microsoft.com/en-us/windows-hardware/drivers/hid/keyboard-and-mouse-hid-client-drivers#supported-buttons-and-wheels-on-mice) thus to avoid conflict 
-+ supports Overlay Scrollbars, e.g. Chrome [Overlay Scrollbars](chrome://flags/#overlay-scrollbars), Edge [Windows 11 Fluent scrollbars](edge://flags/#edge-overlay-scrollbars-win-style)
-+ supports fast zoom iteration over integral multiples(200%, 300%, 400%, ...) and unit fractions(50%, 33%, 25%, ...)
++ support both vertical and horizontal scroll directions, both instant and smooth scroll behaviors
++ support both by-pixels and by-page scroll modes
++ supports fast zoom iteration over integral multiples(200%, 300%, 400%, ...), unit fractions(50%, 33%, 25%, ...)
++ works friendly with overlay scrollbars if scroll behavior is smooth
 
+Special Notes:
 
++ won't work when [Smooth Scroll Wheel](https://learn.microsoft.com/en-us/windows-hardware/drivers/hid/keyboard-and-mouse-hid-client-drivers#supported-buttons-and-wheels-on-mice) or or "Scroll one screen at a time" is detected, thus to avoid conflict
++ only works on top-level scrolling elements
 
-Alternatives
+Alternatives:
 
 + [Fast Scroll](https://chrome.google.com/webstore/detail/fast-scroll/ecnjcglleblahonnenpaiofkabfakgdi?hl=en-US) by Mickaël Allonneau
 + [Fast Scroll](https://chrome.google.com/webstore/detail/fast-scroll/dkdnncjokeklapahlhbgfnnakjjaogmb?hl=en-US) by Diego Aquino
@@ -23,17 +27,25 @@ Alternatives
 ## Browser Requirements
 
 + Chrome 114 / Microsoft Edge 114
-+ Firefox 109
++ Firefox 114
 
 
 
 ## Usage
 
-fast vertical scroll <kbd>Alt + WheelY</kbd>
+ Activation Modifier Key: Alt / option
 
-fast horizontal scroll <kbd>Alt + Shift + WheelY</kbd>, or <kbd>Alt + WheelX</kbd>
+| Action \\ Input \ Platform | Windows, Linux                                               | macOS                                                        |
+| -------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| fast vertical scroll       | <kbd>Alt</kbd> + <code>WheelY</code>                         | <kbd>option</kbd> + <code>WheelY</code>                      |
+| fast horizontal scroll     | <kbd>Alt</kbd> + <kbd>Shift</kbd> + <code>WheelY</code>, <kbd>Alt</kbd> + <code>WheelX</code> | <kbd>option</kbd> + <kbd>Shift</kbd> + <code>WheelY</code>, <kbd>option</kbd> + <code>WheelX</code> |
+| fast zoom                  | <kbd>Alt</kbd> + <kbd>Ctrl</kbd> + <code>WheelY</code>       | <kbd>option</kbd> + <kbd>command</kbd> + <code>WheelY</code> |
 
-fast zoom <kbd>Alt + Ctrl + WheelY</kbd>
+
+
+## Known Issues
+
++ overlay scrollbars doesn't show during fast scroll if scroll behavior is instant
 
 
 
