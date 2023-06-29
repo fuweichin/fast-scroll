@@ -43,12 +43,6 @@ Alternatives:
 
 
 
-## Known Issues
-
-+ overlay scrollbars doesn't show during fast scroll if scroll behavior is instant
-
-
-
 ## License
 
 MIT &copy; 2023 Fuwei Chin
